@@ -65,7 +65,7 @@ EXAMPLES = """
 
 - name: "Find the difference of Project between what is on the Controller versus curated list."
   set_fact:
-    project_difference: "{{ lookup('redhat_cop.controller_configuration.controller_object_diff',
+    project_difference: "{{ lookup('redhat_cop.controller_casc.controller_object_diff_tem',
       api_list=controller_api_results, compare_list=differential_item.differential_test_items,
       with_present=true, set_absent=true ) }}"
 
