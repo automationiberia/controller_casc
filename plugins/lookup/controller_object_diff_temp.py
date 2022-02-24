@@ -120,6 +120,9 @@ class LookupModule(LookupBase):
         if api_list[0]["type"] == "organization":
             keys_to_keep = ["name"]
             api_keys_to_keep = ["name"]
+        elif api_list[0]["type"] == "user":
+            keys_to_keep = ["username"]
+            api_keys_to_keep = ["username"]
         else:
             keys_to_keep = ["name", "organization"]
             api_keys_to_keep = ["name", "summary_fields"]
@@ -147,7 +150,7 @@ class LookupModule(LookupBase):
         api_list_reduced = [{key: item[key] for key in api_keys_to_keep} for item in api_list]
 
         # Convert summary field name into org name Only if not type organization
-        if api_list[0]["type"] != "organization":
+        if api_list[0]["type"] != "organization" and  api_list[0]["type"] != "user":
             for item in api_list_reduced:
                 item.update({"organization": item["summary_fields"]["organization"]["name"]})
                 item.pop("summary_fields")
