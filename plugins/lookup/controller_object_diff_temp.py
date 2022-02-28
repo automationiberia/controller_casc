@@ -123,6 +123,11 @@ class LookupModule(LookupBase):
         elif api_list[0]["type"] == "user":
             keys_to_keep = ["username"]
             api_keys_to_keep = ["username"]
+        elif api_list[0]["type"] == "workflow_job_template_node":
+            keys_to_keep = ["workflow_job_template","unified_job_template","identifier"]
+            #api_keys_to_keep = ["workflow_job_template","unified_job_template","identifier","summary_fields"]
+            api_keys_to_keep = ["identifier","summary_fields"]
+
         elif api_list[0]["type"] == "group" or api_list[0]["type"] == "host":
             keys_to_keep = ["name","inventory"]
             api_keys_to_keep = ["name", "summary_fields"]
@@ -157,10 +162,18 @@ class LookupModule(LookupBase):
             for item in api_list_reduced:
                 item.update({"inventory": item["summary_fields"]["inventory"]["name"]})
                 item.pop("summary_fields")
+        elif api_list[0]["type"] == "workflow_job_template_node":
+            for item in api_list_reduced:
+                item.update({"unified_job_template": item["summary_fields"]["unified_job_template"]["name"]})
+                item.update({"workflow_job_template": item["summary_fields"]["workflow_job_template"]["name"]})
+                item.pop("summary_fields")
         elif api_list[0]["type"] != "organization" and api_list[0]["type"] != "user":
             for item in api_list_reduced:
                 item.update({"organization": item["summary_fields"]["organization"]["name"]})
                 item.pop("summary_fields")
+
+        self.display.warning("compare_list_reduced: {0}".format(compare_list_reduced))
+        self.display.warning("api_list_reduced: {0}".format(api_list_reduced))
 
         # Find difference between lists
         difference = [i for i in api_list_reduced if i not in compare_list_reduced]
