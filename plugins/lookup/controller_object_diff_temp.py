@@ -129,6 +129,9 @@ class LookupModule(LookupBase):
         elif api_list[0]["type"] == "group" or api_list[0]["type"] == "host":
             keys_to_keep = ["name","inventory"]
             api_keys_to_keep = ["name", "summary_fields"]
+        #elif api_list[0]["type"] == "credential":
+        #    keys_to_keep = ["name","credential_type"]
+        #    api_keys_to_keep = ["name", "summary_fields"]
         else:
             keys_to_keep = ["name", "organization"]
             api_keys_to_keep = ["name", "summary_fields"]
@@ -159,6 +162,11 @@ class LookupModule(LookupBase):
         if api_list[0]["type"] == "group" or api_list[0]["type"] == "host":
             for item in api_list_reduced:
                 item.update({"inventory": item["summary_fields"]["inventory"]["name"]})
+                item.pop("summary_fields")
+        elif api_list[0]["type"] == "credential":
+            for item in api_list_reduced:
+                item.update({"organization": item["summary_fields"]["organization"]["name"]})
+                item.update({"credential_type": item["summary_fields"]["credential_type"]["name"]})
                 item.pop("summary_fields")
         elif api_list[0]["type"] == "workflow_job_template_node":
             for item in api_list_reduced:
