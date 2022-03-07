@@ -129,9 +129,6 @@ class LookupModule(LookupBase):
         elif api_list[0]["type"] == "group" or api_list[0]["type"] == "host":
             keys_to_keep = ["name","inventory"]
             api_keys_to_keep = ["name", "summary_fields"]
-        #elif api_list[0]["type"] == "credential":
-        #    keys_to_keep = ["name","credential_type"]
-        #    api_keys_to_keep = ["name", "summary_fields"]
         else:
             keys_to_keep = ["name", "organization"]
             api_keys_to_keep = ["name", "summary_fields"]
