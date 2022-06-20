@@ -17,8 +17,8 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: building collection
-      run: |
-        ./build_collecion.sh
+      run:  ansible-galaxy collection build --output-path ./releases
+  
     - name: relase new version
       uses: softprops/action-gh-release@v1
       with:
