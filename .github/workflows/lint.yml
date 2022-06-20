@@ -23,7 +23,6 @@ jobs:
       with:
         files: ./releases/*.tar.gz
 
-
     # - name: Lint Ansible Playbook
     #   # replace "master" with any valid ref
     #   uses: ansible/ansible-lint-action@151b9a2
