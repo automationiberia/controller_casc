@@ -12,21 +12,15 @@ jobs:
     # Important: This sets up your GITHUB_WORKSPACE environment variable
     - uses: actions/checkout@v2
 
-<<<<<<< HEAD
     - name: building collection
       run: |
         build_collecion.sh
     - name: relase new version
       uses: softprops/action-gh-release@v1
-=======
-    - name: Lint Ansible Playbook
-      # replace "master" with any valid ref
-      uses: ansible/ansible-lint-action@main
->>>>>>> 26c3975d580f7e9b04db8411659171ec6d9c2361
       with:
         files: ./releases/*.tar.gz
 
-<<<<<<< HEAD
+
     # - name: Lint Ansible Playbook
     #   # replace "master" with any valid ref
     #   uses: ansible/ansible-lint-action@151b9a2
@@ -64,26 +58,3 @@ jobs:
     #     #   -c C                  Specify configuration file to use. Defaults to ".ansible-lint"
     #     args: "-q"
 ...
-=======
-        # Options:
-        #   -q                    quieter, although not silent output
-        #   -p                    parseable output in the format of pep8
-        #   --parseable-severity  parseable output including severity of rule
-        #   -r RULESDIR           specify one or more rules directories using one or
-        #                         more -r arguments. Any -r flags override the default
-        #                         rules in ansiblelint/rules, unless -R is also used.
-        #   -R                    Use default rules in ansiblelint/rules in addition to
-        #                         any extra
-        #                         rules directories specified with -r. There is no need
-        #                         to specify this if no -r flags are used
-        #   -t TAGS               only check rules whose id/tags match these values
-        #   -x SKIP_LIST          only check rules whose id/tags do not match these
-        #                         values
-        #   --nocolor             disable colored output
-        #   --exclude=EXCLUDE_PATHS
-        #                         path to directories or files to skip. This option is
-        #                         repeatable.
-        #   -c C                  Specify configuration file to use. Defaults to ".ansible-lint"
-        args: "-q"
-...
->>>>>>> 26c3975d580f7e9b04db8411659171ec6d9c2361
