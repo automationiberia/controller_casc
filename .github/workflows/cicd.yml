@@ -2,7 +2,7 @@
 name: Ansible Release  # feel free to pick your own name
 
 on: 
-  pull_request:
+  push:
     branches: 
       - main
 
