@@ -23,7 +23,7 @@ jobs:
     - name: Generate release tag
       id: tag
       run: |
-        echo "::set-output name=release_tag::Version_$(grep -oP '^version: \K.*' ./galaxy.yml)""
+        echo "::set-output name=release_tag::Version_$(grep -oP '^version: \K.*' ./galaxy.yml)"
 
     - name: Relase new version
       uses: softprops/action-gh-release@v1
