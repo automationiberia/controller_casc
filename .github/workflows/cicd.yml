@@ -1,0 +1,32 @@
+---
+name: Ansible Release  # feel free to pick your own name
+
+on: 
+  push:
+    branches: 
+      - main
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    # Important: This sets up your GITHUB_WORKSPACE environment variable
+    - uses: actions/checkout@v2
+
+    - name: building collection
+      run:  ./build_collection.sh
+      shell: bash
+  
+    - name: Generate release tag
+      id: tag
+      run: |
+        echo "::set-output name=release_tag::Version_$(grep -oP '^version: \K.*' ./galaxy.yml)"
+
+    - name: Relase new version
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: ${{ steps.tag.outputs.release_tag }}
+        files: ./releases/*.tar.gz
+...
