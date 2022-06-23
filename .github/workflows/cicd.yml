@@ -5,12 +5,12 @@ on:
   push:
     branches: 
       - main
+    paths:
+      - 'galaxy.yml'
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     # Important: This sets up your GITHUB_WORKSPACE environment variable
     - uses: actions/checkout@v2
