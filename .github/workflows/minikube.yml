@@ -1,5 +1,5 @@
 ---
-name: Ansible Release  # feel free to pick your own name
+name: Testing with Minikube  # feel free to pick your own name
 
 on:
   push:
