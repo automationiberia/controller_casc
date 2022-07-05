@@ -21,10 +21,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          path: controller_configuration
+          path: controller_casc
 
       - name: "Install dependencies"
-        run: pip install -r controller_configuration/.github/requirements.txt
+        run: pip install -r controller_casc/.github/requirements.txt
 
       - name: Setup Minikube
         uses: manusa/actions-setup-minikube@v2.4.2
@@ -45,7 +45,7 @@ jobs:
           minikube addons enable ingress
           alias kubectl="minikube kubectl --"
           make deploy NAMESPACE=default
-          kubectl apply -f controller_configuration/.github/workflow-config/kube/awx_def.yml
+          kubectl apply -f controller_casc/.github/workflow-config/kube/awx_def.yml
       - name: Wait / Sleep
         uses: jakejarvis/wait-action@v0.1.0
         with:
