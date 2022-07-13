@@ -1,12 +1,10 @@
 ---
 name: Ansible Release  # feel free to pick your own name
 
-on: 
+on:
   push:
-    branches: 
-      - main
-    paths:
-      - 'galaxy.yml'
+    tags:
+      - 'Version_*'
 
 jobs:
   build:
@@ -16,13 +14,10 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: building collection
-      run:  ./build_collection.sh
-      shell: bash
-  
-    - name: Generate release tag
-      id: tag
       run: |
-        echo "::set-output name=release_tag::Version_$(grep -oP '^version: \K.*' ./galaxy.yml)"
+        VERSION_RELEASE=$(echo ${GITHUB_REF##*/} | grep -oP '(?<=Version_)[^ ]*')
+        ./build_collection.sh ${VERSION_RELEASE}
+      shell: bash
 
     - name: Relase new version
       uses: softprops/action-gh-release@v1
