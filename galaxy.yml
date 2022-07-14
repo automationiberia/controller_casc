@@ -71,3 +71,4 @@ build_ignore:
  - build_collection.sh
  - publish_collection.sh
  - docs/images
+ - examples
