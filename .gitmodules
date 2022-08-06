@@ -1,0 +1,12 @@
+[submodule "OrgExample"]
+	path = OrgExample
+	url = git@github.com:automationiberia/OrgExample.git
+[submodule "roles/controller_casc_implementation/tests/orgs_vars"]
+	path = roles/controller_casc_implementation/tests/orgs_vars
+	url = git@github.com:automationiberia/OrgExample.git
+[submodule "roles/controller_casc_implementation/tests/orgs_vars/OrgExample"]
+	path = roles/controller_casc_implementation/tests/orgs_vars/OrgExample
+	url = git@github.com:automationiberia/OrgExample.git
+[submodule "orgs_vars"]
+	path = roles/controller_casc_implementation/tests/orgs_vars
+	url = git@github.com:automationiberia/OrgExample.git
