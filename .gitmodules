@@ -1,0 +1,6 @@
+[submodule "roles/controller_casc_implementation/tests/orgs_vars"]
+	path = roles/controller_casc_implementation/tests/orgs_vars
+	url = git@github.com:automationiberia/OrgExample.git
+[submodule "roles/controller_casc_desired_state/tests/org_vars"]
+	path = roles/controller_casc_desired_state/tests/org_vars
+	url = git@github.com:automationiberia/OrgExample.git
