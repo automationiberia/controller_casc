@@ -5,4 +5,4 @@ if [ $# -ne 1 ]; then
   exit 1
 fi
 ansible-galaxy collection publish ./releases/${1} -s inbound-redhat_cop
-rm -rf ${1}
+# rm -rf ${1}
